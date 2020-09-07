@@ -1,24 +1,76 @@
 
 
-		Part I. Component
-			1. JSX
-			2. Rendering Lists
-				=> Each child must have an value for the attribute "key"
-			3. Conditional Rendering
-			4. Handling Events
-				<button onClick={() => this.handleDelete(movie)} />
-				onClick={AFunctionDefinition || APointerToAFunction} // A function Call is not allowed!
-			5. Updating the State
-			Notes:
-				+ Why use onClick={() => this.handleDelete(movie)}, 
-					but not onClick={this.handleDelete(movie)}
-					Explain:
-						because onClick={ A whole Function DEFINITION   ||  A POINTER to a function} // not a function CALL
-										 () => this.handleDelete(movie) ||  this.handleDelete        // this.handleDelete(movie)
-			Libs:
-				+ bootstrap (npm i bootstrap)
-				+ font-awesome (npm i font-awesome)
-			Extensions:
-				+ Prettier Code Format (auto format on save)
-			Faster:
-				+ Apply Zen coding. button.btn.btn-danger.btn-sm
+	Part I. Component
+		1. JSX
+		2. Rendering Lists
+			=> Each child must have an value for the attribute "key"
+		3. Conditional Rendering
+		4. Handling Events
+			<button onClick={() => this.handleDelete(movie)} />
+			onClick={AFunctionDefinition || APointerToAFunction} // A function Call is not allowed!
+		5. Updating the State
+		Notes:
+			+ Why use onClick={() => this.handleDelete(movie)}, 
+				but not onClick={this.handleDelete(movie)}
+				Explain:
+					because onClick={ A whole Function DEFINITION   ||  A POINTER to a function} // not a function CALL
+									 () => this.handleDelete(movie) ||  this.handleDelete        // this.handleDelete(movie)
+		Libs:
+			+ bootstrap (npm i bootstrap)
+			+ font-awesome (npm i font-awesome)
+		Extensions:
+			+ Prettier Code Format (auto format on save)
+		Faster:
+			+ Apply Zen coding. button.btn.btn-danger.btn-sm
+
+
+-------------------------------------------------------------------------
+
+	Part II. Composing Component
+		1. Pass Data
+			=> Use PROPS
+		2. Raise and Handle Events
+		3. Multiple Components in Sync
+			=> Lifting the State up to the Parent Component
+		4. Functional Components
+		5. Lifecycle Hooks
+			+ Mounting Phase
+				=> When an INSTANCE of component is CREATED and INSERTED into the DOM
+				1. constructor(props) // called only one when an instance of class is created
+					-> Initialize properties of class
+					-> Should call this.state = this.props.something;
+					-> Not allowed to call this.setState(); // error
+				2. render()
+				3. componentDidMount() // just called one time after the component is rendered into the DOM
+					-> Get data from server by Making AJAX calls. Eg: const newMovies = axios.get(url);
+					-> Then, Call this.setState({movies: newMovies});
+				Note: Mounting Order: Parent -> Child
+			+ Updating Phase
+				Eg: When we like a movie.
+				=> When the STATE or PROPS of a component get changed
+				1. render()
+				2. componentDidUpdate(prevProps, prevState)
+					=> When we change the state or give a component props, these above methods are called in order.
+					=> Check the prevProps and prevState has changed????
+						=> Change ? make some API call to fetch new data.
+					
+					Eg:
+						componentDidUpdate(prevProps, prevState) {
+							if(prevProps.DATA !== this.props.DATA) {
+								// Api Call to fetch new data
+							}
+						}
+					
+			+ Unmounting
+				Eg: When we delete a movie.
+				=> Before the component is REMOVED from the DOM.
+				1. componentWilUnmount()
+					=> Call before the movie removed from the DOM
+				=> Should CLEAN UP something: Timers, Listener, Subscriptions
+		Libs:
+			+ font-awesome (npm i font-awesome)
+		Extensions:
+			+ React Developer Tools - Debugging
+			
+			
+----------------------------------------------------
