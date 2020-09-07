@@ -22,3 +22,12 @@
 				+ Prettier Code Format (auto format on save)
 			Faster:
 				+ Apply Zen coding. button.btn.btn-danger.btn-sm
+		
+		Part II. Composing Component
+			1. Pass Data
+				=> Use PROPS
+			2. Raise and Handle Events
+			3. Multiple Components in Sync
+				=> Lifting the State, have multiple components share the same State
+			4. Functional Components
+			5. Lifecycle Hooks
