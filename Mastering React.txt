@@ -1,0 +1,24 @@
+
+
+		Part I. Component
+			1. JSX
+			2. Rendering Lists
+				=> Each child must have an value for the attribute "key"
+			3. Conditional Rendering
+			4. Handling Events
+				<button onClick={() => this.handleDelete(movie)} />
+				onClick={AFunctionDefinition || APointerToAFunction} // A function Call is not allowed!
+			5. Updating the State
+			Notes:
+				+ Why use onClick={() => this.handleDelete(movie)}, 
+					but not onClick={this.handleDelete(movie)}
+					Explain:
+						because onClick={ A whole Function DEFINITION   ||  A POINTER to a function} // not a function CALL
+										 () => this.handleDelete(movie) ||  this.handleDelete        // this.handleDelete(movie)
+			Libs:
+				+ bootstrap (npm i bootstrap)
+				+ font-awesome (npm i font-awesome)
+			Extensions:
+				+ Prettier Code Format (auto format on save)
+			Faster:
+				+ Apply Zen coding. button.btn.btn-danger.btn-sm
