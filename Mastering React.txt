@@ -101,3 +101,12 @@
 					// Init HELPER state: List of columns in details
 					+ Give apart to TableHeader (columns, sortColumn, onSort)
 					+ Give apart to TableBody (data = movies, onLike, onDelete)
+
+----------------------------------------------------
+
+Part IV. Routing
+	1. Route Parameters
+	2. Query String
+	3. Redirect
+	4. Not Found Pages 
+	5. Nested Routing
