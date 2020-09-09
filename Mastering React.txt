@@ -76,4 +76,28 @@
 ----------------------------------------------------
 
 	Part III. Paging - Filtering - Sorting
-	
+		1. Implement: Paging - Filtering - Sorting
+		2. Extracting Table
+		3. All LoC in a function should have the same abstraction
+		4. Which UI contains interacting with user
+			=> Should be extracted into a individual component. Like table header
+		5. Argument Destructuring: Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) => {}
+		6. Pass data from parent to child component( From container component to presentational component)
+		7. Checking type of props
+		Libs:
+			+ lodash (npm i lodash)
+		Notes:
+			+ What is gonna change overtime => state
+			+ What need to be remember for keeping track of individual user's interaction => helper state
+				Eg: currentPage, pageSize
+		
+		STORY about refactoring:
+			HIGH component give DETAILED information to LOW component:
+				+ Main State (will be sync with database)
+				+ Helper State (Support for BL and rendering)
+				+ Handlers Pointers
+			Eg: Movies give (movies, sortColumn, onSort, onLike, onDelete) to MoviesTable
+				MoviesTable use these above information to
+					// Init HELPER state: List of columns in details
+					+ Give apart to TableHeader (columns, sortColumn, onSort)
+					+ Give apart to TableBody (data = movies, onLike, onDelete)
