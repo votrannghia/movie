@@ -101,3 +101,64 @@
 					// Init HELPER state: List of columns in details
 					+ Give apart to TableHeader (columns, sortColumn, onSort)
 					+ Give apart to TableBody (data = movies, onLike, onDelete)
+
+----------------------------------------------------
+
+	Part IV. Routing
+		1. Route Parameters
+		2. Query String
+		3. Redirect
+		4. Not Found Pages 
+		5. Nested Routing
+		Libs:
+			+ react-router-dom (npm i react-router-dom)
+			+ query-string (npm i query-string)
+		Flow:
+			1. Setup Navigations by Links
+				+ Link = (path -> label)
+				+ Switch: ---> Matching exact path
+			2. Setup Routes: (Content Area)
+				=> Mappings: which PATH ------> which COMPONENT
+				+ Route(PATH ------> COMPONENT)
+				+ Redirect is a special Route: Move users to a default component when:
+					. Invalid Path
+					. Default Path 
+				+ Props passed into COMPONENT
+					1. Standard Props {history, location, match} from <Route /> component.
+					2. Additional Props
+			3. Destinated COMPONENT Retrieve information from the source
+				+ String Query (search,...) (HIGHLY RECOMMENDED)
+					=> location.search: "?sortBy=newest&approved=true"
+					Eg: localhost:3001/post?sortBy=newest&approved=true
+				+ Query Parameter (approved=true&genre=comedy)
+					=> match.params{year: 2020, month: 09}
+					Eg: localhost:3001/post/:year/:month
+					Eg: localhost:3001/post/:year?/:month? (optional paramter)
+				FROM: {history, location, match}
+
+				+ Retrieve value of query String
+					-> Using lib query-string
+
+			Some other usecases:
+
+			4. Invalid Route ? User get lost by wrong path => App take user to the default path.
+				=> <Redirect to="/defaultPath" /> (Eg: to="/not-found")
+				Dont forget to set up the defaultPath point to a default component (Eg: NotFound)
+				Another Application of Redirect:
+					<Redirect from="/an-old-Path" to="/a-good-path" />
+					Eg: <Redirect from="/messages" to="/posts" />
+
+			5. Controll use when click the back and forward button
+				+ push
+				+ replace => Make the back button doesnt work
+			6. Nested Navigations
+						Home Products Posts Admin  <------------------- NavBar
+				SideBar: when click Admin page
+						Users
+						Admin
+
+		Notes:
+			+ url = Browser(path) (on address bar)
+			+ path might contains String Query || Parameter
+				queryString.parse(location.search);
+					=> const {sortyBy, approved}
